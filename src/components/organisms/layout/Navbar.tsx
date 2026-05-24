@@ -12,7 +12,7 @@ const Navbar = () => {
     { label: 'Profil DTI', href: '/profil-dti' },
     { label: 'About Us', href: '/about-us' },
     { label: 'Members', href: '/members' },
-    { label: 'Fun Corners', href: '/fun-corners' },
+    { label: 'Fun Corners', href: '/fun-corners' }
   ]
 
   const isActive = (href: string) => {
@@ -30,7 +30,7 @@ const Navbar = () => {
             href={item.href}
             className={`mx-4 font-medium transition-colors ${
               isActive(item.href)
-                ? 'text-yellow-cs-30 underline decoration-yellow-cs-30 decoration-2 underline-offset-6'
+                ? 'text-yellow-cs-30 decoration-yellow-cs-30 underline decoration-2 underline-offset-6'
                 : 'text-white'
             }`}
           >
