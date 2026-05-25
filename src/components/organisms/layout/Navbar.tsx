@@ -49,7 +49,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className="bg-blue-cs-40/85 fixed top-3 left-1/2 z-20 flex w-[calc(100%-1rem)] -translate-x-1/2 items-center justify-between gap-3 rounded-[16px] px-3 py-2.5 text-white backdrop-blur-xs sm:top-4 sm:w-[calc(100%-2rem)] sm:px-5 sm:py-3 lg:w-[calc(100%-3rem)] lg:px-8 lg:py-4"
+        className="bg-blue-cs-40/85 fixed top-3 left-1/2 z-50 flex w-[calc(100%-1rem)] -translate-x-1/2 items-center justify-between gap-3 rounded-[16px] px-3 py-2.5 text-white backdrop-blur-xs sm:top-4 sm:w-[calc(100%-2rem)] sm:px-5 sm:py-3 lg:w-[calc(100%-3rem)] lg:px-8 lg:py-4"
         aria-label="Main navigation"
       >
         <div className="flex shrink-0 items-center gap-2 md:hidden">
