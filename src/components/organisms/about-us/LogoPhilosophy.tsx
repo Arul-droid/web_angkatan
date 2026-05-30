@@ -16,11 +16,11 @@ const philosophyData = [
     title: 'Bintang',
     image: LogoBintang,
     description: (
-      <p>
+      <>
         Perlambangan dari <span className="text-yellow-cs-30">Astra</span>, sebagai bentuk dari{' '}
         <span className="text-yellow-cs-30">harapan</span> dan <span className="text-yellow-cs-30">tujuan</span>, serta
         cita-cita bersama yang ingin kami capai.
-      </p>
+      </>
     )
   },
   {
@@ -28,11 +28,11 @@ const philosophyData = [
     title: 'Arus ke Atas',
     image: LogoArusKeAtas,
     description: (
-      <p>
+      <>
         Melambangkan proses <span className="text-yellow-cs-30">perkembangan karakter</span> dan{' '}
         <span className="text-yellow-cs-30">kompetensi</span> untuk mencapai{' '}
         <span className="text-yellow-cs-30">bintang</span> <span className="text-yellow-cs-30">(tujuan)</span>
-      </p>
+      </>
     )
   },
   {
@@ -40,11 +40,11 @@ const philosophyData = [
     title: 'Titik',
     image: LogoTitik,
     description: (
-      <p>
+      <>
         Simbol dari <span className="text-yellow-cs-30">Titik Awal</span>, menggambarkan bahwa tiap individu memiliki{' '}
         <span className="text-yellow-cs-30">potensi</span> serta mimpi yang menjadi awal{' '}
         <span className="text-yellow-cs-30">perjalanan</span>
-      </p>
+      </>
     )
   },
   {
@@ -52,11 +52,11 @@ const philosophyData = [
     title: 'Arus ke Bawah',
     image: LogoArusKeBawah,
     description: (
-      <p>
+      <>
         menyimbolkan <span className="text-yellow-cs-30">kepedulian</span> dan{' '}
         <span className="text-yellow-cs-30">saling merangkul</span> untuk menciptakan lingkungan yang{' '}
         <span className="text-yellow-cs-30">inklusif</span>
-      </p>
+      </>
     )
   },
   {
@@ -64,10 +64,10 @@ const philosophyData = [
     title: 'Dua Arus',
     image: LogoDuaArus,
     description: (
-      <p>
+      <>
         Melambangkan <span className="text-yellow-cs-30">kolaborasi</span> antar Individu baik secara internal atau
         eksternal dalam upaya <span className="text-yellow-cs-30">berkembang bersama</span>
-      </p>
+      </>
     )
   },
   {
@@ -75,10 +75,10 @@ const philosophyData = [
     title: 'Huruf E',
     image: LogoDuaArus,
     description: (
-      <p>
+      <>
         Bentuk menyerupai huruf <span className="text-yellow-cs-30">‘e’</span> yang menjadi simbol dari nama{' '}
         <span className="text-yellow-cs-30">‘EVASTRA’</span>
-      </p>
+      </>
     )
   },
   {
@@ -86,13 +86,13 @@ const philosophyData = [
     title: 'Gradasi',
     image: LogoGradient,
     description: (
-      <p>
+      <>
         Melambangkan <span className="text-yellow-cs-30">keberagaman individu</span> yang{' '}
         <span className="text-yellow-cs-30">saling melengkapi</span> dalam satu{' '}
         <span className="text-yellow-cs-30">tujuan</span> bersama melalui proses perkembangan yang berjalan secara{' '}
         <span className="text-yellow-cs-30">bertahap</span>, dari mengenal diri, belajar bersama, hingga mencapai{' '}
         <span className="text-yellow-cs-30">potensi terbaik</span>
-      </p>
+      </>
     )
   }
 ]
@@ -127,7 +127,7 @@ const LogoPhilosophy = () => {
           }}
         >
           {/* Inner card */}
-          <div className="relative w-full overflow-hidden rounded-[75px] bg-[#FFFCF2] px-2 py-12 md:rounded-[75px] md:px-20 md:py-14">
+          <div className="relative flex min-h-[420px] w-full items-center overflow-hidden rounded-[75px] bg-[#FFFCF2] px-2 py-12 sm:min-h-[400px] sm:min-h-[470px] md:min-h-[420px] md:rounded-[75px] md:px-20 md:py-14 lg:min-h-[360px]">
             {/* ISI KONTEN */}
             <div className="flex w-full flex-col items-center gap-6 px-2 text-center md:flex-row md:items-center md:gap-12 md:px-6 md:text-left">
               {/* LOGO CONTAINER */}
@@ -157,8 +157,8 @@ const LogoPhilosophy = () => {
                 </h3>
                 {/* {DESKRRIPSI} */}
 
-                <div className="flex w-full max-w-[821px] flex-col gap-4 text-center font-sans text-[11px] leading-relaxed font-semibold text-[#173679] sm:text-base md:text-left md:text-xl">
-                  {current.description}
+                <div className="flex w-full max-w-[821px] flex-col gap-4 text-center font-sans text-xs leading-relaxed font-semibold text-[#173679] sm:text-base md:text-left md:text-base lg:text-xl">
+                  <p>{current.description}</p>
                 </div>
               </div>
             </div>
