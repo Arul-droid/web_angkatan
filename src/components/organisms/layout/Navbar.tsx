@@ -114,7 +114,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <div className={`fixed inset-0 z-30 md:hidden ${isMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}>
+      <div className={`fixed inset-0 z-50 md:hidden ${isMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}>
         <button
           type="button"
           className={`bg-blue-cs-40/65 absolute inset-0 transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}
