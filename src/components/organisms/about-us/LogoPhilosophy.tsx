@@ -168,14 +168,14 @@ const LogoPhilosophy = () => {
               <button
                 onClick={handlePrev}
                 aria-label="Previous"
-                className="pointer-events-auto flex h-8 w-8 items-center justify-center rounded-full text-3xl font-light text-[#1a3a6e] transition-all select-none hover:bg-black/5 active:bg-black/10 md:h-10 md:w-10"
+                className="pointer-events-auto flex h-8 w-8 cursor-pointer items-center justify-center rounded-full text-3xl font-light text-[#1a3a6e] transition-all select-none hover:bg-black/5 active:bg-black/10 md:h-10 md:w-10"
               >
                 ‹
               </button>
               <button
                 onClick={handleNext}
                 aria-label="Next"
-                className="pointer-events-auto flex h-8 w-8 items-center justify-center rounded-full text-3xl font-light text-[#1a3a6e] transition-all select-none hover:bg-black/5 active:bg-black/10 md:h-10 md:w-10"
+                className="pointer-events-auto flex h-8 w-8 cursor-pointer items-center justify-center rounded-full text-3xl font-light text-[#1a3a6e] transition-all select-none hover:bg-black/5 active:bg-black/10 md:h-10 md:w-10"
               >
                 ›
               </button>
