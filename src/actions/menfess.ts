@@ -5,6 +5,7 @@ import { ZodError } from 'zod'
 import { menfessPayloadSchema, normalizeMenfessPayload, type MenfessPayloadInput } from '@/lib/menfess/schema'
 import { createSupabaseAnonymousClient } from '@/lib/supabase/server'
 import type { ActionResult, MenfessListData, MenfessRecord } from '@/types/menfess'
+import { revalidatePath } from 'next/cache'
 
 const MENFESS_SELECT_FIELDS = 'id,message,from,to,created_at' as const
 const DEFAULT_PAGE = 1
@@ -67,6 +68,8 @@ export async function createMenfessAction(
         error: 'No row was returned from Supabase.'
       }
     }
+
+    revalidatePath('/fun-corners')
 
     return {
       success: true,
