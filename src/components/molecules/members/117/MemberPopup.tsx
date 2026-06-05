@@ -4,6 +4,8 @@ import React, { useEffect } from 'react'
 
 import Image from 'next/image'
 
+import { createPortal } from 'react-dom'
+
 import Instagram from '@/components/atoms/button/InstagramButtonLink'
 import LinkedInButtonLink from '@/components/atoms/button/LinkedInButtonLink'
 import SpotifyEmbed from '@/components/molecules/SpotifyEmbed'
@@ -40,9 +42,9 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
     return null
   }
 
-  return (
+  return createPortal(
     // PADA BAGIAN INI KAMU BOLEH MENGUBAH STYLE SESUKA HATI KAMU, TAPI JANGAN UBAH STRUKTUR DAN FUNGSI DARI KODE INI AGAR FUNGSI POPUP TETAP BERJALAN DENGAN BAIK
-    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4 pt-28 pb-8 sm:pt-32">
+    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4">
       <button
         type="button"
         aria-label="Close member detail"
@@ -100,7 +102,8 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           <SpotifyEmbed spotifyUrl="https://open.spotify.com/track/4Ts3FQkEs1jRIbcgxxT7R0?si=ef181a5eb58d47ac" />
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
