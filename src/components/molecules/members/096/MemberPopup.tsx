@@ -57,13 +57,13 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           type="button"
           aria-label="Close member detail"
           onClick={onClose}
-          className="absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-none border-2 border-zinc-700 text-xl leading-none font-bold hover:bg-zinc-800"
+          className="absolute top-4 right-4 z-20 flex h-9 w-9 items-center justify-center rounded-none border-2 border-zinc-700 text-xl leading-none font-bold hover:bg-zinc-800"
         >
           ✕
         </button>
 
-        <div className="mb-6 overflow-hidden rounded-none border-2 border-zinc-700 grayscale transition-all duration-500 hover:grayscale-0">
-          <Image src={ProfileImage} alt="Profile Image" className="h-96 w-full object-cover object-top sm:h-120" />
+        <div className="relative z-10 mb-6 overflow-hidden rounded-none border-2 border-zinc-700 grayscale transition-all duration-500 hover:grayscale-0">
+          <Image src={ProfileImage} alt="Profile Image" className="h-[480px] w-full object-cover object-top" />
         </div>
 
         <div className="pr-10">
