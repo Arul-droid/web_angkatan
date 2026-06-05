@@ -43,7 +43,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
   return (
     // PADA BAGIAN INI KAMU BOLEH MENGUBAH STYLE SESUKA HATI KAMU, TAPI JANGAN UBAH STRUKTUR DAN FUNGSI DARI KODE INI AGAR FUNGSI POPUP TETAP BERJALAN DENGAN BAIK
     <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4 pt-28 pb-8 sm:pt-32">
-      <button type="button" aria-label="Close member detail" onClick={onClose} className="absolute inset-0">
+      <button type="button" aria-label="Open YouTube" onClick={() => window.open('https://www.youtube.com/watch?v=Aq5WXmQQooo', '_blank')} className="absolute inset-0 cursor-pointer">
         <img
           src="https://cdn.terminaltrove.com/m/a03290ca-6b48-4c34-9970-93174008e7c8.gif"
           alt=""
@@ -68,12 +68,18 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           type="button"
           aria-label="Close member detail"
           onClick={onClose}
-          className="absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border text-xl leading-none transition-colors"
-          style={{ borderColor: '#c6a0f6', color: '#c6a0f6' }}
-          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(198, 160, 246, 0.15)')}
-          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
+          className="absolute top-4 right-4 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border-2 text-lg leading-none font-bold transition-all"
+          style={{ borderColor: '#c6a0f6', color: '#c6a0f6', backgroundColor: 'rgba(36, 39, 58, 0.9)' }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = '#c6a0f6'
+            e.currentTarget.style.color = '#24273a'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(36, 39, 58, 0.9)'
+            e.currentTarget.style.color = '#c6a0f6'
+          }}
         >
-          x
+          ✕
         </button>
 
         <div className="mb-5 overflow-hidden rounded-2xl border-2" style={{ borderColor: '#c6a0f6' }}>
@@ -82,7 +88,9 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
 
         <div className="pr-10">
           {/* UBAH NAMA ANDA */}
-          <h2 className="text-2xl font-black">Husam Danish</h2>
+          <h2 className="text-2xl font-black" style={{ color: '#c6a0f6' }}>
+            Husam Danish
+          </h2>
           {/* UBAH NRP DAN ASAL */}
           <p className="mt-1 text-sm font-semibold" style={{ color: '#a5adcb' }}>
             5027251060 - Buleleng
@@ -110,13 +118,23 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
             }}
           >
             {/* UBAH HOBI KAMU */}
-            <p className="text-xs tracking-wide uppercase" style={{ color: '#8bd5ca' }}>
-              Hobi
-            </p>
-            <p className="mt-2">
-              Ricing, Baca (mostly novel & komik), olahraga (jogging, cycling, basket), main game (mostly MLBB, but
-              sometimes random indie game)
-            </p>
+            <p className="text-xs tracking-wide uppercase">Hobi</p>
+            <ul className="mt-2 list-inside list-disc">
+              <li>
+                <a
+                  href="https://www.reddit.com/r/unixporn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="highlight-link"
+                  style={{ color: '#8bd5ca' }}
+                >
+                  <b>Ricing linux</b>
+                </a>
+              </li>
+              <li>Baca (mostly novel & komik)</li>
+              <li>Olahraga (jogging, cycling, basket)</li>
+              <li>Main game (mostly MLBB, but sometimes random indie game)</li>
+            </ul>
           </div>
           <div
             className="rounded-xl border p-4 transition-transform"
@@ -137,9 +155,15 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
             <p className="mt-2">
               Sejauh ini bolak-balik surabaya-bali (mudik) selalu motoran
               <br></br>
-              <br></br>I use
-              <a href="https://wiki.archlinux.org/">
-                <b> Arch</b>
+              <br></br>I use{' '}
+              <a
+                href="https://wiki.archlinux.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="highlight-link"
+                style={{ color: '#f5a97f' }}
+              >
+                <b>Arch</b>
               </a>{' '}
               BTW!
             </p>
@@ -169,6 +193,17 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
         </div>
       </div>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800');
+.highlight-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: inherit;
+  transition: opacity 0.2s;
+}
+.highlight-link:hover {
+  opacity: 0.7;
+}
 @keyframes border-rainbow {
   0% { border-color: #c6a0f6; }
   25% { border-color: #8bd5ca; }
