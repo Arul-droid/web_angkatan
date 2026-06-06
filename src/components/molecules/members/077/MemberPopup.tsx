@@ -128,7 +128,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
             {/* SOCIAL MEDIA PILLS */}
             <div className="flex justify-center sm:justify-start flex-wrap gap-3 mb-6 relative z-10">
               <div className="hover:-translate-y-1 transition-transform">
-                <Instagram username="rifqidwm" />
+                <Instagram username="rifqidwm_" />
               </div>
               <div className="hover:-translate-y-1 transition-transform">
                 <LinkedInButtonLink username="rifqidwm" />
