@@ -65,7 +65,6 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
         }
       `}</style>
 
-      {/* Layar Belakang Hitam Pekat */}
       <button
         type="button"
         aria-label="Close member detail"
@@ -74,7 +73,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
       />
 
       {/* ======================================================== */}
-      {/* TOMBOL CLOSE GLOBAL (MOBILE FRIENDLY & TEMA DANGER)      */}
+      {/* TOMBOL CLOSE TAMBAHAN UNTUK MOBILE (DITAMBAHKAN DI SINI) */}
       {/* ======================================================== */}
       <button
         type="button"
@@ -122,6 +121,15 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
 
             <div className="absolute top-0 left-0 z-10 h-[2px] w-full bg-gradient-to-r from-transparent via-red-800 to-transparent opacity-40 transition-opacity duration-1000 group-hover/main:opacity-100"></div>
 
+            <button
+              type="button"
+              aria-label="Close member detail"
+              onClick={onClose}
+              className="relative z-40 absolute right-5 top-5 flex h-8 w-8 items-center justify-center text-2xl font-light text-neutral-600 opacity-30 transition-all duration-700 group-hover/main:opacity-100 hover:text-red-500 hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]"
+            >
+              ×
+            </button>
+
             <div className="relative z-10 flex-1">
               
               <div className="group/photo relative mb-8 overflow-hidden border-b border-red-900/50 pb-6">
@@ -136,19 +144,19 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
               <div className="mb-8">
                 {/* UBAH NAMA ANDA */}
                 <h2 className="font-serif text-4xl font-bold tracking-wider text-neutral-100 drop-shadow-[0_2px_10px_rgba(153,27,27,0.3)] transition-all duration-500 hover:text-white hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
-                  Catherina Vallencia K
+                  Asfia Fahmisan
                 </h2>
                 {/* UBAH NRP DAN ASAL */}
                 <p className="mt-2 font-mono text-xs tracking-[0.3em] text-red-700/90 uppercase">
-                  ID: 5027251082 - Surakarta
+                  ID: 5027251043 - Solo
                 </p>
               </div>
 
               <div className="mb-8 flex gap-3">
                 {/* UBAH USERNAME INSTAGRAM */}
-                <Instagram username="jkt48.erine" />
+                <Instagram username="fahmi_jaj292929" />
                 {/* UBAH USERNAME LINKEDIN */}
-                <LinkedInButtonLink username="jkt48.erine" />
+                <LinkedInButtonLink username="asfia-fahmisan-438221281" />
               </div>
 
               <div className="mb-8 grid gap-6 sm:grid-cols-2">
@@ -156,13 +164,13 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
                 <div className="group/box relative overflow-hidden border-l-2 border-neutral-900 bg-neutral-950/40 p-5 backdrop-blur-sm transition-colors duration-500 hover:border-red-600">
                   {/* UBAH HOBI KAMU */}
                   <p className="relative z-10 font-serif text-xs font-bold tracking-[0.2em] text-transparent transition-all duration-500 uppercase group-hover/box:text-red-500 group-hover/box:[text-shadow:0_0_8px_rgba(220,38,38,0.8)]">Hobi</p>
-                  <p className="relative z-10 mt-2 text-sm leading-relaxed text-transparent transition-all duration-700 group-hover/box:text-neutral-100 group-hover/box:[text-shadow:0_0_8px_rgba(255,255,255,0.4)]">Nyanyi</p>
+                  <p className="relative z-10 mt-2 text-sm leading-relaxed text-transparent transition-all duration-700 group-hover/box:text-neutral-100 group-hover/box:[text-shadow:0_0_8px_rgba(255,255,255,0.4)]">Membaca dan bermain FIFA</p>
                 </div>
                 
                 <div className="group/box relative overflow-hidden border-l-2 border-neutral-900 bg-neutral-950/40 p-5 backdrop-blur-sm transition-colors duration-500 hover:border-red-600">
                   {/* UBAH FUNFACT KAMU */}
                   <p className="relative z-10 font-serif text-xs font-bold tracking-[0.2em] text-transparent transition-all duration-500 uppercase group-hover/box:text-red-500 group-hover/box:[text-shadow:0_0_8px_rgba(220,38,38,0.8)]">Fun Fact</p>
-                  <p className="relative z-10 mt-2 text-sm leading-relaxed text-transparent transition-all duration-700 group-hover/box:text-neutral-100 group-hover/box:[text-shadow:0_0_8px_rgba(255,255,255,0.4)]">Gwe Member JKT</p>
+                  <p className="relative z-10 mt-2 text-sm leading-relaxed text-transparent transition-all duration-700 group-hover/box:text-neutral-100 group-hover/box:[text-shadow:0_0_8px_rgba(255,255,255,0.4)]">TK-ku 3 tahun :)</p>
                 </div>
 
               </div>
@@ -170,11 +178,11 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
               <div className="group/box relative z-10 overflow-hidden border-l-2 border-neutral-900 bg-neutral-950/40 p-5 backdrop-blur-sm transition-colors duration-500 hover:border-red-600">
                 {/* UBAH LAGU FAVORIT KAMU */}
                 <p className="relative z-10 mb-3 font-serif text-xs font-bold tracking-[0.2em] text-transparent transition-all duration-500 uppercase group-hover/box:text-red-500 group-hover/box:[text-shadow:0_0_8px_rgba(220,38,38,0.8)]">Lagu Favorit</p>
-                <p className="relative z-10 mb-4 text-sm font-semibold tracking-wide text-transparent transition-all duration-700 group-hover/box:text-neutral-100 group-hover/box:[text-shadow:0_0_8px_rgba(255,255,255,0.4)]">There Is a Light That Never Goes Out</p>
+                <p className="relative z-10 mb-4 text-sm font-semibold tracking-wide text-transparent transition-all duration-700 group-hover/box:text-neutral-100 group-hover/box:[text-shadow:0_0_8px_rgba(255,255,255,0.4)]">The Nights</p>
 
                 {/* UBAH URL SPOTIFY KAMU DENGAN LAGU FAVORIT MU */}
                 <div className="relative z-10 opacity-0 transition-all duration-700 group-hover/box:opacity-100 group-hover/box:drop-shadow-[0_0_15px_rgba(220,38,38,0.3)]">
-                  <SpotifyEmbed spotifyUrl="https://open.spotify.com/track/2X62SjtuwVQiGiZvZZ9Ztr?si=f6718391848a4469" />
+                  <SpotifyEmbed spotifyUrl="https://open.spotify.com/track/0ct6r3EGTcMLPtrXHDvVjc?si=0725cd1e18c94e2f" />
                 </div>
               </div>
 
