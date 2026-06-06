@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 import Image from 'next/image'
 
@@ -41,9 +42,9 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
     return null
   }
 
-  return (
+  return createPortal(
     // PADA BAGIAN INI KAMU BOLEH MENGUBAH STYLE SESUKA HATI KAMU, TAPI JANGAN UBAH STRUKTUR DAN FUNGSI DARI KODE INI AGAR FUNGSI POPUP TETAP BERJALAN DENGAN BAIK
-    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4 pt-28 pb-8 sm:pt-32">
+    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4">
       <button
         type="button"
         aria-label="Close member detail"
@@ -51,7 +52,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
         className="absolute inset-0 bg-black/65 backdrop-blur-sm"
       />
 
-      <div className="font-maimai relative z-10 max-h-[calc(100vh-9rem)] w-full max-w-[720px] animate-[member-popup-show_350ms_ease-out] overflow-y-auto rounded-2xl border-2 border-[#ADD8E6] bg-black p-6 text-[#ADD8E6] shadow-xl sm:max-h-[calc(100vh-10rem)] sm:p-8">
+      <div className="font-maimai relative z-10 max-h-screen w-full max-w-[720px] animate-[member-popup-show_350ms_ease-out] overflow-y-auto rounded-2xl border-2 border-[#ADD8E6] bg-black p-6 text-[#ADD8E6] shadow-xl sm:p-8">
         <video
           className="pointer-events-none absolute inset-x-0 top-200 bottom-0 h-auto w-full object-cover object-center opacity-50 sm:top-135"
           autoPlay
@@ -65,6 +66,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
         </video>
         <div className="absolute inset-0 bg-black/45" aria-hidden="true" />
 
+      <div className="border-neutral-cs-10 bg-blue-cs-40 relative z-10 max-h-[100dvh] w-full max-w-[720px] animate-[member-popup-show_200ms_ease-out] overflow-y-auto rounded-2xl border-2 p-6 text-white shadow-xl sm:p-8">
         <button
           type="button"
           aria-label="Close member detail"
@@ -119,7 +121,8 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           <SpotifyEmbed spotifyUrl="https://open.spotify.com/track/14vSQsIaGXnAPmdNxvTLfi?si=8e8d9f779c6d44fd" />
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
