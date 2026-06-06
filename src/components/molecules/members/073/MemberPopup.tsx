@@ -50,50 +50,54 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
       />
 
-      <div className="border-neutral-cs-10 bg-gradient-to-b from-blue-cs-40 to-blue-950 relative z-10 max-h-[calc(100vh-9rem)] w-full max-w-[720px] animate-[member-popup-show_200ms_ease-out] overflow-y-auto rounded-2xl border-2 p-6 text-white shadow-2xl ring-1 ring-white/10 sm:max-h-[calc(100vh-10rem)] sm:p-8">
+      <div className="border-pink-200 bg-gradient-to-br from-pink-400 via-fuchsia-500 to-fuchsia-900 relative z-10 max-h-[calc(100vh-9rem)] w-full max-w-[720px] animate-[member-popup-show_200ms_ease-out] overflow-y-auto rounded-2xl border-2 p-6 text-white shadow-2xl ring-1 ring-pink-100/20 sm:max-h-[calc(100vh-10rem)] sm:p-8">
         <button
           type="button"
           aria-label="Close member detail"
           onClick={onClose}
-          className="border-neutral-cs-10 hover:bg-white/10 absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border text-lg transition-colors"
+          className="border-pink-200 bg-rose-400/20 hover:bg-rose-300/40 absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border text-lg text-white transition-colors"
         >
           x
         </button>
 
-        <div className="border-neutral-cs-10/40 mb-5 overflow-hidden rounded-2xl border">
-          <Image src={ProfileImage} alt="Profile Image" className="h-120 w-full object-cover object-center" />
+        <div className="border-pink-200/50 bg-white/5 mb-5 overflow-hidden rounded-2xl border">
+          <Image
+            src={ProfileImage}
+            alt="Profile Image"
+            className="h-120 w-full object-cover object-center transition-transform duration-300 hover:scale-105"
+          />
         </div>
 
         <div className="pr-10">
           {/* UBAH NAMA ANDA */}
-          <h2 className="text-2xl font-black">Nabila Nafisatus Zuhro</h2>
+          <h2 className="text-3xl font-black text-pink-50">Nabila Nafisatus Zuhro</h2>
           {/* UBAH NRP DAN ASAL */}
-          <p className="text-neutral-cs-10/70 mt-1 text-sm font-semibold">5027251073 - Nganjuk</p>
+          <p className="mt-1 text-sm font-semibold text-pink-100/80">5027251073 - Nganjuk</p>
         </div>
 
         <div className="mt-5 flex gap-2">
           {/* UBAH USERNAME INSTAGRAM */}
           <Instagram username="nabilanafisa__" />
           {/* UBAH USERNAME LINKEDIN */}
-          <LinkedInButtonLink username="Nabila Nafisatus Zuhro" />
+          <LinkedInButtonLink username="nabila-nafisatus-zuhro-6466aa388" />
         </div>
 
         <div className="mt-6 grid gap-4 text-sm font-semibold sm:grid-cols-2">
-          <div className="border-neutral-cs-10/40 rounded-xl border p-4">
+          <div className="border-pink-200/40 bg-pink-100/10 rounded-xl border p-4 backdrop-blur-sm">
             {/* UBAH HOBI KAMU */}
             <p className="text-neutral-cs-10/60 text-xs tracking-wide uppercase">Hobi</p>
             <p className="mt-2">Bikin puisi, nggambar, dengerin lagu Yowis Ben</p>
           </div>
-          <div className="border-neutral-cs-10/40 hover:border-white/30 hover:bg-white/5 rounded-xl border p-4 transition-colors">
+          <div className="border-pink-200/40 bg-fuchsia-200/10 hover:border-pink-100 hover:bg-fuchsia-100/20 rounded-xl border p-4 transition-colors backdrop-blur-sm">
             {/* UBAH FUNFACT KAMU */}
-            <p className="text-neutral-cs-10/60 text-xs tracking-wide uppercase">Fun Fact</p>
+            <p className="text-pink-200 text-xs tracking-widest uppercase">Fun Fact</p>
             <p className="mt-2">Suka ngelindur dari kecil</p>
           </div>
         </div>
 
-        <div className="border-neutral-cs-10/40 hover:border-white/30 hover:bg-white/5 rounded-xl border p-4 transition-colors">
+        <div className="border-pink-200/40 bg-pink-100/10 hover:border-pink-100 hover:bg-pink-100/20 rounded-xl border p-4 transition-colors backdrop-blur-sm">
           {/* UBAH LAGU FAVORIT KAMU */}
-          <p className="text-neutral-cs-10/60 text-xs font-bold tracking-wide uppercase">Lagu Favorit</p>
+          <p className="text-pink-200 text-xs font-bold tracking-widest uppercase">Lagu Favorit</p>
           <p className="my-2 text-sm font-semibold">Akad - Payung Teduh, tapi sebenernya banyakk lagu fav dari Yowis Ben, Sheila On 7, Hivi, hmm lagu R&B, pop, jawa, hipdut, bollywood</p>
 
           {/* UBAH URL SPOTIFY KAMU DENGAN LAGU FAVORIT MU */}
