@@ -2,12 +2,6 @@
 
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-<<<<<<< HEAD
-=======
-
-import { createPortal } from 'react-dom'
-
->>>>>>> 4a92cfa6038a869d73341953cb47efdcc5237d6a
 import Instagram from '@/components/atoms/button/InstagramButtonLink'
 import LinkedInButtonLink from '@/components/atoms/button/LinkedInButtonLink'
 import SpotifyEmbed from '@/components/molecules/SpotifyEmbed'
@@ -82,11 +76,10 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
           style={{ background: 'linear-gradient(to top, #0a1520 0%, transparent 100%)' }}
         />
-
         <div className="relative z-10 flex flex-col items-center gap-5 px-8 text-center max-w-sm">
           <div className="text-4xl select-none">🔥</div>
           <p className="text-xs tracking-[0.5em] uppercase" style={{ color: '#f4c07a88' }}>
-            ゆるキャン △ 
+            ゆるキャン △
           </p>
           <h2
             className="text-xl font-bold tracking-widest"
@@ -117,14 +110,8 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
     )
   }
 
-<<<<<<< HEAD
   return (
     <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4 pt-28 pb-8 sm:pt-32">
-=======
-  return createPortal(
-    // PADA BAGIAN INI KAMU BOLEH MENGUBAH STYLE SESUKA HATI KAMU, TAPI JANGAN UBAH STRUKTUR DAN FUNGSI DARI KODE INI AGAR FUNGSI POPUP TETAP BERJALAN DENGAN BAIK
-    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4">
->>>>>>> 4a92cfa6038a869d73341953cb47efdcc5237d6a
       <button
         type="button"
         aria-label="Close member detail"
@@ -137,7 +124,6 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
         className="absolute inset-0 pointer-events-none"
         style={{ background: 'rgba(6, 13, 20, 0.65)', backdropFilter: 'blur(2px)' }}
       />
-
       <div
         className="relative z-10 max-h-[calc(100vh-9rem)] w-full max-w-[720px] animate-[member-popup-show_200ms_ease-out] overflow-y-auto p-6 text-white sm:max-h-[calc(100vh-10rem)] sm:p-8"
         style={{
@@ -254,8 +240,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           ✦ ゆるキャン △ ✦
         </p>
       </div>
-    </div>,
-    document.body
+    </div>
   )
 }
 
