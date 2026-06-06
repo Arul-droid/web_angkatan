@@ -1,17 +1,16 @@
 'use client'
 
-import React, { useEffect } from 'react'
-import { createPortal } from 'react-dom'
-
-import { useState } from "react";
-import TetrisGate from "./TetrisGate";
+import { useCallback, useEffect, useState } from 'react'
 
 import Image from 'next/image'
+
+import { createPortal } from 'react-dom'
 
 import Instagram from '@/components/atoms/button/InstagramButtonLink'
 import LinkedInButtonLink from '@/components/atoms/button/LinkedInButtonLink'
 import SpotifyEmbed from '@/components/molecules/SpotifyEmbed'
 
+import TetrisGate from './TetrisGate'
 import ProfileImage from './image.jpg'
 
 type MemberPopupProps = {
@@ -20,7 +19,13 @@ type MemberPopupProps = {
 }
 
 const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
-  const [passed, setPassed] = useState(false);
+  const [passed, setPassed] = useState(false)
+
+  const handleClose = useCallback(() => {
+    setPassed(false)
+    onClose()
+  }, [onClose])
+
   useEffect(() => {
     if (!isOpen) {
       return
@@ -28,7 +33,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        onClose()
+        handleClose()
       }
     }
 
@@ -39,7 +44,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
       document.body.style.overflow = ''
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [isOpen, onClose])
+  }, [isOpen, handleClose])
 
   if (!isOpen) {
     return null
@@ -53,7 +58,6 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
   }
 
   return createPortal(
-
     // PADA BAGIAN INI KAMU BOLEH MENGUBAH STYLE SESUKA HATI KAMU, TAPI JANGAN UBAH STRUKTUR DAN FUNGSI DARI KODE INI AGAR FUNGSI POPUP TETAP BERJALAN DENGAN BAIK
     <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4">
 
