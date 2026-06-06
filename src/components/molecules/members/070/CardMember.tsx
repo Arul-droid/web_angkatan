@@ -44,11 +44,11 @@ const CardMember = () => {
               {/* UBAH USERNAME LINKEDIN KAMU */}
               <LinkedInButtonLink username="sultanbahyshidqi" />
             </div>
-            <div className="w-full rounded-2xl">
+            <div className="w-full overflow-hidden rounded-2xl">
               <Image
                 src={ProfileImage}
                 alt="Profile Image"
-                className="h-50 w-full rounded-2xl object-cover object-center"
+                className="h-50 w-full rounded-2xl object-cover object-[center_80%] scale-175"
               />
             </div>
           </div>
