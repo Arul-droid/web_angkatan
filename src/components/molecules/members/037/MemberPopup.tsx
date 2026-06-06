@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 import Image from 'next/image'
 import { Cormorant_Garamond, Nunito } from 'next/font/google'
@@ -52,7 +53,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
     return null
   }
 
-  return (
+  return createPortal(
     // PADA BAGIAN INI KAMU BOLEH MENGUBAH STYLE SESUKA HATI KAMU, TAPI JANGAN UBAH STRUKTUR DAN FUNGSI DARI KODE INI AGAR FUNGSI POPUP TETAP BERJALAN DENGAN BAIK
     <div
       className={`fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4 pt-28 pb-8 sm:pt-32 ${bodyFont.className}`}
@@ -65,7 +66,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
       />
 
       <div
-        className="relative z-10 max-h-[calc(100vh-9rem)] w-full max-w-[720px] animate-[member-popup-show_200ms_ease-out] overflow-y-auto rounded-[28px] border-2 border-white/60 p-6 text-white shadow-[0_0_45px_rgba(96,165,250,0.45)] sm:max-h-[calc(100vh-10rem)] sm:p-8"
+        className="relative z-10 max-h-screen w-full max-w-[720px] animate-[member-popup-show_200ms_ease-out] overflow-y-auto rounded-[28px] border-2 border-white/60 p-6 text-white shadow-[0_0_45px_rgba(96,165,250,0.45)] sm:p-8"
         style={{
           backgroundImage: `linear-gradient(rgba(9, 26, 52, 0.35), rgba(9, 26, 52, 0.5)), url(${BackgroundImage.src})`,
           backgroundSize: 'cover',
@@ -183,7 +184,8 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
