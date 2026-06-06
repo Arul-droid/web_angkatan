@@ -1,15 +1,16 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { createPortal } from 'react-dom'
 
 import Image from 'next/image'
+
+import { createPortal } from 'react-dom'
 
 import Instagram from '@/components/atoms/button/InstagramButtonLink'
 import LinkedInButtonLink from '@/components/atoms/button/LinkedInButtonLink'
 import SpotifyEmbed from '@/components/molecules/SpotifyEmbed'
 
-import ProfileImage from './image.png'
+import ProfileImage from './image.jpg'
 
 type MemberPopupProps = {
   isOpen: boolean
@@ -46,7 +47,9 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-[#05050e]/90 backdrop-blur-md">
       
       {/* --- INJEKSI CUSTOM CSS UNTUK ANIMASI ABSTRAK --- */}
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes spin-gradient { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         @keyframes float-slow { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(15px, -20px); } }
         @keyframes float-reverse { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-15px, 20px); } }
