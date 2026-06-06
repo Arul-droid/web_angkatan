@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 import Image from 'next/image'
 
@@ -40,9 +41,9 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
     return null
   }
 
-  return (
+  return createPortal(
     //* PADA BAGIAN INI KAMU BOLEH MENGUBAH STYLE SESUKA HATI KAMU, TAPI JANGAN UBAH STRUKTUR DAN FUNGSI DARI KODE INI AGAR FUNGSI POPUP TETAP BERJALAN DENGAN BAIK */}
-<div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4 pt-28 pb-8 sm:pt-32 bg-black/40 backdrop-blur-md group/modal">
+<div className="fixed  inset-0 z-[100] flex items-start justify-center max-h-screen overflow-y-auto px-4 pt-28 pb-8 sm:pt-32 bg-black/40 backdrop-blur-md group/modal">
   
   {/* INLINE CUSTOM ANIMATION - Menghasilkan efek kelas dunia tanpa merusak config project */}
   <style>{`
@@ -206,7 +207,8 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           <SpotifyEmbed spotifyUrl="https://open.spotify.com/track/7zAt4tdL44D3VuzsvM0N8n?si=2904e26f70974d0a" />
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
