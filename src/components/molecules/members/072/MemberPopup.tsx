@@ -121,7 +121,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           </div>
           <div className="border-neutral-cs-10/40 rounded-xl border p-4">
             <p className="text-neutral-cs-10/60 text-xs tracking-wide uppercase">Fun Fact</p>
-            <p className="mt-2">Suka dengerin lagu tapi gatau dan gabisa namain nama lagu Indonesia atau (mayoritas) lagu mainstream</p>
+            <p className="mt-2">Suka dengerin lagu tapi gatau dan gabisa namain nama lagu Indonesia atau (mayoritas) lagu mainstream.</p>
           </div>
         </div>
 
