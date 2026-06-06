@@ -2,6 +2,12 @@
 
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
+<<<<<<< HEAD
+=======
+
+import { createPortal } from 'react-dom'
+
+>>>>>>> 4a92cfa6038a869d73341953cb47efdcc5237d6a
 import Instagram from '@/components/atoms/button/InstagramButtonLink'
 import LinkedInButtonLink from '@/components/atoms/button/LinkedInButtonLink'
 import SpotifyEmbed from '@/components/molecules/SpotifyEmbed'
@@ -111,8 +117,14 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
     )
   }
 
+<<<<<<< HEAD
   return (
     <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4 pt-28 pb-8 sm:pt-32">
+=======
+  return createPortal(
+    // PADA BAGIAN INI KAMU BOLEH MENGUBAH STYLE SESUKA HATI KAMU, TAPI JANGAN UBAH STRUKTUR DAN FUNGSI DARI KODE INI AGAR FUNGSI POPUP TETAP BERJALAN DENGAN BAIK
+    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4">
+>>>>>>> 4a92cfa6038a869d73341953cb47efdcc5237d6a
       <button
         type="button"
         aria-label="Close member detail"
@@ -242,7 +254,8 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           ✦ ゆるキャン △ ✦
         </p>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
