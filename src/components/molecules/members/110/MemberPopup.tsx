@@ -222,7 +222,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
       />
 
       <div
-        className="jinx-hand relative z-10 max-h-[calc(100vh-9rem)] w-full max-w-[720px] overflow-y-auto rounded-[20px] border-[3px] border-[#ff2e88] bg-[#150d36] p-6 text-white shadow-[0_0_45px_rgba(255,46,136,.4)] sm:max-h-[calc(100vh-10rem)] sm:p-8"
+        className="jinx-hand relative z-10 max-h-screen w-full max-w-[720px] overflow-y-auto rounded-[20px] border-[3px] border-[#ff2e88] bg-[#150d36] p-6 text-white shadow-[0_0_45px_rgba(255,46,136,.4)] sm:p-8"
         style={{
           animation: 'jinx-pop-in 400ms cubic-bezier(.2,1.35,.45,1) both',
           backgroundImage:
