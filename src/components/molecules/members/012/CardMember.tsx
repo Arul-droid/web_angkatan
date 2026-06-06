@@ -4,6 +4,8 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import Image from 'next/image'
 
+import { createPortal } from 'react-dom'
+
 import Instagram from '@/components/atoms/button/InstagramButtonLink'
 import LinkedInButtonLink from '@/components/atoms/button/LinkedInButtonLink'
 
@@ -97,6 +99,8 @@ const CardMember = () => {
       return
     }
 
+    document.body.style.overflow = 'hidden'
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         openPopupAfterIntro()
@@ -106,6 +110,7 @@ const CardMember = () => {
     window.addEventListener('keydown', handleKeyDown)
 
     return () => {
+      document.body.style.overflow = ''
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [introStage, openPopupAfterIntro])
@@ -158,55 +163,58 @@ const CardMember = () => {
           </div>
         </div>
       </div>
-      {introStage !== 'idle' ? (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black">
-          {introStage === 'video' || introStage === 'videoFade' ? (
-            <>
-              <video
-                ref={introVideoRef}
-                className={`h-full w-full object-cover object-center transition-opacity duration-300 sm:object-contain ${
-                  introStage === 'videoFade' ? 'opacity-0' : 'opacity-100'
-                }`}
-                autoPlay
-                playsInline
-              onEnded={openPopupAfterIntro}
-              onError={openPopupAfterIntro}
-              onLoadedMetadata={(event) => {
-                event.currentTarget.volume = 0.6
-              }}
-            >
-                <source src="/api/members/012/xaleid-intro-video" type="video/mp4" />
-              </video>
-              <button
-                type="button"
-                onClick={openPopupAfterIntro}
-                className={`font-maimai absolute right-4 bottom-4 rounded-lg border border-[#ADD8E6]/70 bg-black/70 px-4 py-2 text-sm font-bold text-[#ADD8E6] backdrop-blur-sm transition-all duration-300 hover:bg-black/85 sm:right-6 sm:bottom-6 sm:text-base ${
-                  introStage === 'videoFade' ? 'opacity-0' : 'opacity-100'
-                }`}
-              >
-                SKIP INTRO &gt;&gt;
-              </button>
-            </>
-          ) : (
-            <div
-              className={`font-cinzel flex max-w-[760px] animate-[member-popup-show_500ms_ease-out] flex-col items-center px-6 text-center text-white transition-opacity duration-700 ${
-                introStage === 'fade' ? 'opacity-0' : 'opacity-100'
-              }`}
-            >
-              <p className="animate-[quote-glow-breathe_2.4s_ease-in-out_infinite] text-2xl leading-relaxed font-semibold tracking-wide text-[#ADD8E6] sm:text-4xl">
-                一緒に行きましょう、
-                <br />
-                すべての決着をつけに。
-              </p>
-              <p className="mt-6 animate-[quote-glow-breathe_2.8s_ease-in-out_infinite] text-sm leading-relaxed tracking-[0.18em] text-white/70 sm:text-lg">
-                -Let&apos;s go together.
-                <br />
-                To settle everything-
-              </p>
-            </div>
-          )}
-        </div>
-      ) : null}
+      {introStage !== 'idle'
+        ? createPortal(
+            <div className="fixed inset-0 z-[200] flex h-[100dvh] max-h-[100dvh] items-center justify-center overflow-hidden bg-black">
+              {introStage === 'video' || introStage === 'videoFade' ? (
+                <>
+                  <video
+                    ref={introVideoRef}
+                    className={`h-full w-full object-cover object-center transition-opacity duration-300 sm:object-contain ${
+                      introStage === 'videoFade' ? 'opacity-0' : 'opacity-100'
+                    }`}
+                    autoPlay
+                    playsInline
+                    onEnded={openPopupAfterIntro}
+                    onError={openPopupAfterIntro}
+                    onLoadedMetadata={(event) => {
+                      event.currentTarget.volume = 0.6
+                    }}
+                  >
+                    <source src="/api/members/012/xaleid-intro-video" type="video/mp4" />
+                  </video>
+                  <button
+                    type="button"
+                    onClick={openPopupAfterIntro}
+                    className={`font-maimai absolute right-4 bottom-4 rounded-lg border border-[#ADD8E6]/70 bg-black/70 px-4 py-2 text-sm font-bold text-[#ADD8E6] backdrop-blur-sm transition-all duration-300 hover:bg-black/85 sm:right-6 sm:bottom-6 sm:text-base ${
+                      introStage === 'videoFade' ? 'opacity-0' : 'opacity-100'
+                    }`}
+                  >
+                    SKIP INTRO &gt;&gt;
+                  </button>
+                </>
+              ) : (
+                <div
+                  className={`font-cinzel flex max-w-[760px] animate-[member-popup-show_500ms_ease-out] flex-col items-center px-6 text-center text-white transition-opacity duration-700 ${
+                    introStage === 'fade' ? 'opacity-0' : 'opacity-100'
+                  }`}
+                >
+                  <p className="animate-[quote-glow-breathe_2.4s_ease-in-out_infinite] text-2xl leading-relaxed font-semibold tracking-wide text-[#ADD8E6] sm:text-4xl">
+                    一緒に行きましょう、
+                    <br />
+                    すべての決着をつけに。
+                  </p>
+                  <p className="mt-6 animate-[quote-glow-breathe_2.8s_ease-in-out_infinite] text-sm leading-relaxed tracking-[0.18em] text-white/70 sm:text-lg">
+                    -Let&apos;s go together.
+                    <br />
+                    To settle everything-
+                  </p>
+                </div>
+              )}
+            </div>,
+            document.body
+          )
+        : null}
       <MemberPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </>
   )
