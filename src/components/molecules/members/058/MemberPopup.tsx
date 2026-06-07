@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
 import Image from 'next/image'
@@ -24,14 +24,18 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
   const [isMusicPlaying, setIsMusicPlaying] = useState(true)
   const [showWarning, setShowWarning] = useState(true)
 
+  const closePopup = useCallback(() => {
+    setShowWarning(true)
+    setIsMusicPlaying(true)
+    onClose()
+  }, [onClose])
+
   useEffect(() => {
     if (!isOpen) return
 
-    setShowWarning(true)
-
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        onClose()
+        closePopup()
       }
     }
 
@@ -41,9 +45,8 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
     return () => {
       document.body.style.overflow = ''
       window.removeEventListener('keydown', handleKeyDown)
-      setShowWarning(true)
     }
-  }, [isOpen, onClose])
+  }, [isOpen, closePopup])
 
   useEffect(() => { //for audio
     if (!isOpen || showWarning) return
@@ -91,7 +94,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
             </button>
             <button
               type="button"
-              onClick={onClose}
+              onClick={closePopup}
               className="px-6 py-2 border border-white/40 text-white font-bold rounded-lg hover:bg-white/10 transition-all"
             >
               Go Back
@@ -104,8 +107,8 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
   }
 
   return createPortal(
-    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4">
-      <div onClick={onClose} className="fixed inset-0 z-0">
+    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-hidden px-4">
+      <div onClick={closePopup} className="fixed inset-0 z-0">
         <video
           autoPlay
           loop
@@ -118,11 +121,11 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(33, 6, 3, 0.6)' }} />
       </div>
 
-      <div className="bg-red-950/50 relative z-10 max-h-[100dvh] w-full max-w-[720px] animate-[member-popup-show_200ms_ease-out] overflow-y-auto rounded-2xl p-6 text-white shadow-2xl shadow-black sm:p-8">
+      <div className="bg-red-950/50 relative z-10 h-[100dvh] max-h-[100dvh] w-full max-w-[720px] animate-[member-popup-show_200ms_ease-out] overflow-y-auto overscroll-contain rounded-2xl p-6 text-white shadow-2xl shadow-black sm:p-8">
         <button
           type="button"
           aria-label="Close member detail"
-          onClick={onClose}
+          onClick={closePopup}
           className="border-neutral-cs-10 hover:bg-neutral-cs-10/10 absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border text-xl leading-none"
         >
           x
