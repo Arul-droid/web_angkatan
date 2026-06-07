@@ -8,6 +8,7 @@ import SpotifyEmbed from '@/components/molecules/SpotifyEmbed'
 
 import ProfileImage from './image.jpg'
 import BgImage from './bg-deepwoken.jpg'
+import LogoImage from './deepwoken-logo.webp' // Tambahkan import logo di sini
 
 type MemberPopupProps = {
   isOpen: boolean
@@ -45,7 +46,6 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
   // FITUR BARU: Sinkronisasi BGM dengan Spotify
   useEffect(() => {
     const handleSpotifyMessage = (event: MessageEvent) => {
-      // Pastikan pesan berasal dari domain Spotify yang valid
       if (event.origin !== 'https://open.spotify.com') return
 
       try {
@@ -99,6 +99,11 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
         >
           x
         </button>
+
+        {/* LOGO DITAMBAHKAN DI SINI */}
+        <div className="mb-4 flex justify-center">
+            <Image src={LogoImage} alt="Logo" width={100} height={100} className="object-contain" />
+        </div>
 
         <div className="border-neutral-cs-10/40 mb-5 overflow-hidden rounded-2xl border">
           <Image src={ProfileImage} alt="Profile Image" className="h-120 w-full object-cover object-center" />
