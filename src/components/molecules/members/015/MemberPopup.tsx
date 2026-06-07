@@ -263,7 +263,7 @@ type TermLine = {
 
 let lineId = 0
 
-function TerminalScreen({ onSuccess }: { onSuccess: () => void }) {
+function TerminalScreen({ onSuccess, onClose }: { onSuccess: () => void; onClose: () => void }) {
   const [lines, setLines] = useState<TermLine[]>([
     { id: lineId++, text: 'Last login: Sun Jun 08 06:42:28 2025 from 10.14.17.3', color: 'teal' },
     { id: lineId++, text: '──────────────────────────────────────────────────', color: 'dim' },
@@ -305,6 +305,9 @@ function TerminalScreen({ onSuccess }: { onSuccess: () => void }) {
     } else if (trimmed === 'pwd') {
       addLine('/home/evastra25/members', 'teal')
       // trimmed === 'sudo profile 15'
+    } else if (trimmed === 'whoami') {
+      addLine('manusia,anakadam', 'teal')
+      // trimmed === 'sudo profile 15'
     } else if (trimmed === 'sudo profile 15') {
       setBusy(true)
       addLine('[sudo] password for evastra25/015: ········', 'yellow')
@@ -345,11 +348,12 @@ function TerminalScreen({ onSuccess }: { onSuccess: () => void }) {
         )
       }, 600)
     } else if (trimmed === 'help') {
-      addLine('Available commands: ls  pwd  sudo profile [ID]  clear  help', 'dim')
+      addLine('Available commands: ls  pwd  sudo profile [ID]  clear  help  exit  whoami', 'dim')
     } else if (trimmed === 'clear') {
       setLines([])
     } else if (trimmed === 'exit') {
-      // onclose()
+      addLine('Closing the terminal........', 'red')
+      onClose()
     } else if (trimmed === '') {
       // do nothing
     } else {
@@ -597,7 +601,7 @@ export default function MemberPopup({ onClose, isOpen = true }: MemberPopupProps
         <ScanlineOverlay />
 
         {/* ── TERMINAL VIEW ── */}
-        {view === 'terminal' && <TerminalScreen onSuccess={() => setView('globe')} />}
+        {view === 'terminal' && <TerminalScreen onSuccess={() => setView('globe')} onClose={onClose} />}
 
         {/* ── GLOBE TRANSITION ── */}
         {view === 'globe' && <GlobeScreen onDone={() => setView('profile')} />}
