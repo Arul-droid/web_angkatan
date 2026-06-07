@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 import Image from 'next/image'
 
@@ -40,7 +41,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
     return null
   }
 
-  return (
+  return createPortal(
     // PADA BAGIAN INI KAMU BOLEH MENGUBAH STYLE SESUKA HATI KAMU, TAPI JANGAN UBAH STRUKTUR DAN FUNGSI DARI KODE INI AGAR FUNGSI POPUP TETAP BERJALAN DENGAN BAIK
     <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4 pt-28 pb-8 sm:pt-32 bg-[#07060f]/80 backdrop-blur-md">
 
@@ -56,6 +57,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
         }
       `}</style>
       
+    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4">
       <button
         type="button"
         aria-label="Close member detail"
@@ -67,6 +69,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
 
         <div className="absolute top-0 left-0 h-0.5 w-full animate-[shimmer_2.5s_ease-in-out_infinite] bg-[length:200%_100%] bg-gradient-to-r from-transparent via-purple-500/90 to-transparent" />
 
+      <div className="border-neutral-cs-10 bg-blue-cs-40 relative z-10 max-h-[100dvh] w-full max-w-[720px] animate-[member-popup-show_200ms_ease-out] overflow-y-auto rounded-2xl border-2 p-6 text-white shadow-xl sm:p-8">
         <button
           type="button"
           aria-label="Close member detail"
@@ -116,7 +119,8 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           <SpotifyEmbed spotifyUrl="https://open.spotify.com/playlist/5IIvh2IZlgZWiHqmz5FZym?si=wlyo5DBqS26FexqfAJ6zbQ&pi=b_4k5ifHScGlS" />
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
