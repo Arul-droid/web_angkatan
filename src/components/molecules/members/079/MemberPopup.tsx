@@ -86,7 +86,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           </div>
           {/* UBAH USERNAME LINKEDIN */}
           <div className="rounded-sm border border-yellow-600/30 bg-slate-800/50 p-1 shadow-[inset_0_0_10px_rgba(234,179,8,0.1)]">
-            <LinkedInButtonLink username="raffa al azmi" />
+            <LinkedInButtonLink username="affa-al-azmi-260655379" />
           </div>
         </div>
 

@@ -42,7 +42,7 @@ const CardMember = () => {
               {/* UBAH USERNAME INSTAGRAM KAMU */}
               <Instagram username="raappa.alz" />
               {/* UBAH USERNAME LINKEDIN KAMU */}
-              <LinkedInButtonLink username="Raffa Al Azmi" />
+              <LinkedInButtonLink username="affa-al-azmi-260655379" />
             </div>
             <div className="w-full rounded-2xl">
               <Image
