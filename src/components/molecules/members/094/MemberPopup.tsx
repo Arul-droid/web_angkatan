@@ -44,6 +44,11 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
 // PADA BAGIAN INI KAMU BOLEH MENGUBAH STYLE SESUKA HATI KAMU, TAPI JANGAN UBAH STRUKTUR DAN FUNGSI DARI KODE INI AGAR FUNGSI POPUP TETAP BERJALAN DENGAN BAIK
 <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4 pt-28 pb-8 sm:pt-32 bg-black/70 backdrop-blur-md group/modal">
 
+  return createPortal(
+    // PADA BAGIAN INI KAMU BOLEH MENGUBAH STYLE SESUKA HATI KAMU, TAPI JANGAN UBAH STRUKTUR DAN FUNGSI DARI KODE INI AGAR FUNGSI POPUP TETAP BERJALAN DENGAN BAIK
+<div className="group/modal fixed inset-0 z-[100] flex items-start justify-center overflow-hidden bg-black/40 px-4 backdrop-blur-md">
+  
+  {/* INLINE CUSTOM ANIMATION - Menghasilkan efek kelas dunia tanpa merusak config project */}
   <style>{`
     @keyframes antiMagicAura {
       0% { transform: scale(1) rotate(0deg); opacity: 0.5; filter: blur(25px); }
@@ -268,6 +273,18 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
       <div className="absolute inset-0 animate-aura-black mix-blend-multiply" />
       {/* Taktis Grid Khas Fire Force */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,_transparent_1px),_linear-gradient(90deg,_rgba(255,255,255,0.05)_1px,_transparent_1px)] bg-[size:30px_30px] opacity-20" />
+  {/* MAIN CONTAINER: Diubah menjadi tekstur Grimoire kulit hitam legam dengan border api Fire Force */}
+  <div className="relative z-10 h-[100dvh] max-h-[100dvh] w-full max-w-[720px] overflow-y-auto p-6 sm:p-8 rounded-2xl border-2 text-white shadow-2xl transition-all duration-500 ease-out select-none cursor-pointer
+    bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900 via-[#0d0707] to-black
+    border-orange-600/40 hover:border-orange-500 group/card animate-fire-active
+    active:scale-[0.99] active:rotate-1">
+
+    {/* BACKGROUND EFFECT: Aura Anti-SMagic Hitam Merah mengambang di belakang */}
+    <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl z-0">
+      <div className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,_rgba(239,68,68,0.15),_rgba(0,0,0,0)_50%)] animate-aura" />
+      <div className="absolute -bottom-1/2 -right-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,_rgba(0,0,0,0.8),_rgba(249,115,22,0.08)_60%)] animate-aura" style={{ animationDirection: 'reverse' }} />
+      {/* Garis Grid Taktis ala Fire Force */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,_transparent_1px),_linear-gradient(90deg,_rgba(255,255,255,0.02)_1px,_transparent_1px)] bg-[size:20px_20px] mix-blend-overlay opacity-40" />
     </div>
 
     {/* Background BC x FF Symbols */}
