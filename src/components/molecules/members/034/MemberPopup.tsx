@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import Image from 'next/image'
 
 import Instagram from '@/components/atoms/button/InstagramButtonLink'
@@ -39,9 +40,9 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
     return null
   }
 
-  return (
-    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4 pt-28 pb-8 sm:pt-32">
-      
+  return createPortal(
+    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4">
+
       <div className="absolute inset-0 z-0 bg-[#5c94fc] overflow-hidden">
 
         <div className="absolute top-[10%] left-[10%] sm:left-[15%] opacity-95 drop-shadow-md">
@@ -51,7 +52,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
             <div className="absolute w-[80%] h-4 bg-white bottom-0 left-2" />
           </div>
         </div>
-        
+
         <div className="absolute top-[20%] left-[45%] sm:left-[50%] opacity-95 drop-shadow-md scale-75">
           <div className="relative w-24 h-10 bg-white rounded-full">
             <div className="absolute w-12 h-12 bg-white rounded-full bottom-2 left-2" />
@@ -89,7 +90,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           <div className="w-14 sm:w-16 h-32 sm:h-48 bg-gradient-to-r from-[#6ce424] via-[#00a800] to-[#006000] border-x-4 border-black -mt-1" />
         </div>
 
-        <div 
+        <div
           className="absolute bottom-0 left-0 w-full h-[48px] sm:h-[64px] border-t-4 border-black z-30 drop-shadow-[0_-2px_0_rgba(0,0,0,0.2)]"
           style={{
             backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='32' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='16' fill='%23c84c0c' /%3E%3Cpath d='M0 16H32 M0 8H32 M16 0V8 M0 8V16 M32 8V16' stroke='%23000' stroke-width='2' fill='none' /%3E%3C/svg%3E\")"
@@ -105,8 +106,8 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
         />
       </div>
 
-      <div 
-        className="relative z-50 w-full max-w-[720px] max-h-[calc(100vh-9rem)] sm:max-h-[calc(100vh-10rem)] animate-[member-popup-show_200ms_ease-out] overflow-y-auto rounded-2xl border-4 border-black p-6 sm:p-8 text-white shadow-[12px_12px_0px_rgba(0,0,0,0.5)]"
+      <div
+        className="relative z-50 w-full max-w-[720px] max-h-[100dvh] animate-[member-popup-show_200ms_ease-out] overflow-y-auto rounded-2xl border-4 border-black p-6 sm:p-8 text-white shadow-[12px_12px_0px_rgba(0,0,0,0.5)]"
         style={{ backgroundColor: '#5c94fc' }}
       >
         <button

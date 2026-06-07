@@ -1,6 +1,7 @@
 'use client'
  
 import React, { useEffect, useRef, useState, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import Image from 'next/image'
  
 import SpotifyEmbed from '@/components/molecules/SpotifyEmbed'
@@ -372,7 +373,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
  
   if (!isOpen) return null
  
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[100] overflow-y-auto">
  
       {/* ── INTRO ── */}
@@ -496,8 +497,8 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
  
       {/* ── MEMBER CARD ── */}
       {cardVisible && (
-        <div className="flex min-h-full items-start justify-center px-4 pt-16 pb-16" style={{ position: 'relative', zIndex: 103 }}>
-          <div className="relative w-full my-8" style={{ maxWidth: '560px' }}>
+        <div className="flex min-h-[100dvh] items-start justify-center px-4 py-4" style={{ position: 'relative', zIndex: 103 }}>
+          <div className="relative w-full" style={{ maxWidth: '560px' }}>
  
             {/* floating petals around card */}
             {(['🌸', '🌷', '✿', '🌼'] as const).map((p, i) => (
@@ -521,7 +522,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
  
             {/* window frame */}
             <div
-              className="rounded-[18px] overflow-hidden"
+              className="rounded-[18px] overflow-y-auto max-h-[100dvh]"
               style={{
                 border: '2.5px solid #e8c9ce',
                 boxShadow: '0 8px 40px rgba(200,140,155,0.3)',
@@ -693,7 +694,8 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           50%       { transform: translateY(-14px); }
         }
       `}</style>
-    </div>
+    </div>,
+    document.body
   )
 }
  

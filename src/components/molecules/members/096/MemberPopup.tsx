@@ -155,7 +155,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
   const showMainContent = !isSealed && !showWelcome
 
   return createPortal(
-    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4 py-8">
+    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4">
       
       {/* BACKGROUND DI SEBELAH/LUAR POPUP */}
       <div className="absolute inset-0 bg-black/75 backdrop-blur-md">

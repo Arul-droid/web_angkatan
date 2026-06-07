@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import Image from 'next/image'
 import Instagram from '@/components/atoms/button/InstagramButtonLink'
 import LinkedInButtonLink from '@/components/atoms/button/LinkedInButtonLink'
@@ -57,7 +58,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
 
   if (!isOpen) return null
 
-  return (
+  return createPortal(
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;900&family=Space+Mono:wght@400;700&display=swap');
@@ -136,7 +137,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
         }
       `}</style>
 
-      <div className="yusuf-popup fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4 pt-28 pb-8 sm:pt-32">
+      <div className="yusuf-popup fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4">
         {/* Cursor glow */}
         <div ref={glowRef} className="yusuf-glow" />
 
@@ -151,7 +152,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
         {/* Card */}
         <div
           ref={cardRef}
-          className="yusuf-card relative z-10 max-h-[calc(100vh-9rem)] w-full max-w-[720px] overflow-y-auto rounded-2xl p-6 text-white sm:max-h-[calc(100vh-10rem)] sm:p-8"
+          className="yusuf-card relative z-10 max-h-[100dvh] w-full max-w-[720px] overflow-y-auto rounded-2xl p-6 text-white sm:p-8"
         >
           {/* Close button */}
           <button
@@ -254,7 +255,8 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           </div>
         </div>
       </div>
-    </>
+    </>,
+    document.body
   )
 }
 
