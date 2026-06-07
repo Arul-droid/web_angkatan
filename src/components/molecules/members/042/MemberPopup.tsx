@@ -173,7 +173,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
         {/* UBAH LAGU FAVORIT KAMU */}
         <div className="mt-4 rounded-xl border border-[#534AB7]/25 p-4" style={{ background: 'rgba(83,74,183,0.12)' }}>
           <p className="popup-font-sans text-xs font-medium tracking-widest uppercase text-[#9690DC]/70">Lagu Favorit</p>
-          <p className="popup-font-sans mt-2 text-sm font-light neon-glow-turu text-[#DCD7FF]/85 leading-relaxed">Disillusioned [P.S. pokonya bang daniel]</p>
+          <p className="popup-font-sans mt-2 text-sm font-light neon-glow-turu text-[#DCD7FF]/85 leading-relaxed">Disillusioned [P.S. pokonya abang daniel]</p>
           <SpotifyEmbed spotifyUrl="https://open.spotify.com/track/1gUyF1kls2Q5MkuAi9djjx?si=ba0c1b7a9498419c" />
         </div>
 
