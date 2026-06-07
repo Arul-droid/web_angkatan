@@ -1,10 +1,10 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
-import React, { useEffect } from 'react'
-import { createPortal } from 'react-dom'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import Image from 'next/image'
+
+import { createPortal } from 'react-dom'
 
 import Instagram from '@/components/atoms/button/InstagramButtonLink'
 import LinkedInButtonLink from '@/components/atoms/button/LinkedInButtonLink'
@@ -25,21 +25,24 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
   const [error, setError] = useState('')
   const [isAuthorizing, setIsAuthorizing] = useState(false)
   const [terminalText, setTerminalText] = useState('')
+
+  const closePopup = useCallback(() => {
+    setAccessCode('')
+    setError('')
+    setTerminalText('')
+    setIsAuthorizing(false)
+    setAccessGranted(false)
+    onClose()
+  }, [onClose])
+
   useEffect(() => {
     if (!isOpen) {
-      setAccessCode('')
-      setError('')
-      setTerminalText('')
-      setIsAuthorizing(false)
-      setAccessGranted(false)
-
-      document.body.style.overflow = ''
       return
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        onClose()
+        closePopup()
       }
     }
 
@@ -50,7 +53,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
       document.body.style.overflow = ''
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [isOpen, onClose])
+  }, [isOpen, closePopup])
 
   const handleAuthorize = async () => {
   if (accessCode !== '057') {
@@ -90,7 +93,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
   }
 
   if (!accessGranted) {
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[9999] flex items-center justify-center px-4">
       <div className="absolute inset-0 z-0" 
       style={{ 
@@ -164,7 +167,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
             </button>
 
             <button
-              onClick={onClose}
+              onClick={closePopup}
               className="mt-3 w-full rounded-lg border border-gray-600 py-3"
             >
               CANCEL
@@ -177,16 +180,16 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
 
 
-  return (
+  return createPortal(
     // PADA BAGIAN INI KAMU BOLEH MENGUBAH STYLE SESUKA HATI KAMU, TAPI JANGAN UBAH STRUKTUR DAN FUNGSI DARI KODE INI AGAR FUNGSI POPUP TETAP BERJALAN DENGAN BAIK
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center overflow-y-auto p-4"
-      onClick={onClose}>
+    <div className="fixed inset-0 z-[9999] flex items-start justify-center overflow-hidden px-4">
       {/* Full Screen EVA Overlay */}
       <div className="fixed inset-0 z-[9999] bg-black" />
       {/* EVA Background */}
@@ -202,28 +205,19 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
 
       {/* Overlay */}
       <div className="fixed inset-0 z-[10001] bg-black/85" />
-  return createPortal(
-    // PADA BAGIAN INI KAMU BOLEH MENGUBAH STYLE SESUKA HATI KAMU, TAPI JANGAN UBAH STRUKTUR DAN FUNGSI DARI KODE INI AGAR FUNGSI POPUP TETAP BERJALAN DENGAN BAIK
-    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4">
       <button
         type="button"
         aria-label="Close member detail"
-        onClick={onClose}
+        onClick={closePopup}
         className="fixed inset-0 bg-black/90 z-[9999]"
       />
 
-      <div className=" relative z-[10002] max-h-[calc(100vh-9rem)] w-full max-w-[720px] overflow-y-auto rounded-2xl border-2 border-red-600 text-white shadow-xl sm:max-h-[calc(100vh-10rem)]
+      <div className=" relative z-[10002] h-[100dvh] max-h-[100dvh] w-full max-w-[720px] overflow-y-auto overscroll-contain rounded-2xl border-2 border-red-600 text-white shadow-xl
           "style={{
             backgroundColor: '#0a0a0a',
             boxShadow:
             'inset 8px 0 0 #ff0000, inset -8px 0 0 #ff0000',
           }}
-      <div className="border-neutral-cs-10 bg-blue-cs-40 relative z-10 max-h-[100dvh] w-full max-w-[720px] animate-[member-popup-show_200ms_ease-out] overflow-y-auto rounded-2xl border-2 p-6 text-white shadow-xl sm:p-8">
-        <button
-          type="button"
-          aria-label="Close member detail"
-          onClick={onClose}
-          className="border-neutral-cs-10 hover:bg-neutral-cs-10/10 absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border text-xl leading-none"
         >
         {/*
         <div className="absolute top-0 left-0 h-1 w-full bg-red-600" />
@@ -237,7 +231,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           <button
             type="button"
             aria-label="Close member detail"
-            onClick={onClose}
+            onClick={closePopup}
             className="border-neutral-cs-10 hover:bg-neutral-cs-10/10 absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border text-xl leading-none"
           >
             x
