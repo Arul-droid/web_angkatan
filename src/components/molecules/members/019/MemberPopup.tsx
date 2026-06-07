@@ -80,8 +80,8 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           style={{ animation: 'logoFade 2.5s ease-in-out forwards' }}
         >
           {/* MENGGUNAKAN VARIABLE IMPORT */}
-          <img
-            src={MercedesLogo.src || MercedesLogo}
+          <Image
+            src={MercedesLogo}
             alt="Mercedes Logo"
             className="h-32 w-32 object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
           />
@@ -90,7 +90,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
 
       {/* KONTEN POP CARD UTAMA */}
       <div
-        className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4 py-8"
+        className="fixed inset-0 z-[100] flex items-start justify-center overflow-hidden px-4"
         style={{ animation: 'cardDelay 3s cubic-bezier(0.4, 0, 0.2, 1) forwards' }}
       >
         <button
@@ -100,7 +100,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
           className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity"
         />
 
-        <div className="relative z-10 my-auto w-full max-w-[720px] overflow-y-auto rounded-3xl border border-white/10 bg-slate-900/95 p-6 text-slate-100 shadow-2xl shadow-blue-500/10 backdrop-blur-xl sm:p-8">
+        <div className="relative z-10 h-[100dvh] max-h-[100dvh] w-full max-w-[720px] overflow-y-auto overscroll-contain rounded-3xl border border-white/10 bg-slate-900/95 p-6 text-slate-100 shadow-2xl shadow-blue-500/10 backdrop-blur-xl sm:p-8">
           <button
             type="button"
             aria-label="Close member detail"
