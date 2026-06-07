@@ -1,6 +1,8 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
+
 import Image from 'next/image'
 
 import Instagram from '@/components/atoms/button/InstagramButtonLink'
@@ -76,6 +78,9 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
       `}</style>
 
       {/* Backdrop */}
+  return createPortal(
+    // PADA BAGIAN INI KAMU BOLEH MENGUBAH STYLE SESUKA HATI KAMU, TAPI JANGAN UBAH STRUKTUR DAN FUNGSI DARI KODE INI AGAR FUNGSI POPUP TETAP BERJALAN DENGAN BAIK
+    <div className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto px-4">
       <button
         type="button"
         aria-label="Close member detail"
@@ -154,6 +159,19 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
                 CLICK TO REVEAL
               </p>
             </div>
+      <div className="border-neutral-cs-10 bg-blue-cs-40 relative z-10 max-h-[100dvh] w-full max-w-[720px] animate-[member-popup-show_200ms_ease-out] overflow-y-auto rounded-2xl border-2 p-6 text-white shadow-xl sm:p-8">
+        <button
+          type="button"
+          aria-label="Close member detail"
+          onClick={onClose}
+          className="border-neutral-cs-10 hover:bg-neutral-cs-10/10 absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border text-xl leading-none"
+        >
+          x
+        </button>
+
+        <div className="border-neutral-cs-10/40 mb-5 overflow-hidden rounded-2xl border">
+          <Image src={ProfileImage} alt="Profile Image" className="h-120 w-full object-cover object-center" />
+        </div>
 
           </div>
         </div>
@@ -242,6 +260,18 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
         </div>
       )}
     </div>
+
+        <div className="border-neutral-cs-10/40 mt-4 rounded-xl border p-4">
+          {/* UBAH LAGU FAVORIT KAMU */}
+          <p className="text-neutral-cs-10/60 text-xs font-bold tracking-wide uppercase">Lagu Favorit</p>
+          <p className="my-2 text-sm font-semibold">There Is a Light That Never Goes Out</p>
+
+          {/* UBAH URL SPOTIFY KAMU DENGAN LAGU FAVORIT MU */}
+          <SpotifyEmbed spotifyUrl="https://open.spotify.com/track/2X62SjtuwVQiGiZvZZ9Ztr?si=f6718391848a4469" />
+        </div>
+      </div>
+    </div>,
+    document.body
   )
 }
 
