@@ -215,7 +215,7 @@ const MemberPopup = ({ isOpen, onClose }: MemberPopupProps) => {
                   Asfia Fahmisan
                 </h2>
                 <p className="mt-2 font-mono text-xs tracking-[0.3em] text-red-700/90 uppercase">
-                  ID: 5027251043 - Solo
+                  5027251043 - Solo
                 </p>
               </div>
 
